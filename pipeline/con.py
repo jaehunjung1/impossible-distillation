@@ -102,11 +102,7 @@ class ConGenerator:
                 prefixes = [sample["x_l"] for sample in samples]
 
         else:
-            prefixes = [
-                f"Given context, paraphrase the last sentence.\n"
-                f"Context: {sample['x_l']} \n"
-                f"Sentence: {sample['y_orig']}" for sample in samples
-            ]
+            prefixes = [f"{sample['y_orig']}" for sample in samples]
 
         generations = self.generate_with_prefix(prefixes)
         num_gen_per_sample = len(generations) // len(samples)
